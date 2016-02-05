@@ -35,9 +35,9 @@ module.exports = function(BasePlugin) {
         mailOptions = {
           to: receivers.join(","),
           from: config.from || enquiry.email,
-          subject: 'Enquiry from ' + enquiry.name + ' <' + enquiry.email + '>'+enquiry.subject, 
+          subject: 'Enquiry from ' + enquiry.name + ' <' + enquiry.email + '> '+enquiry.subject, 
           text: enquiry.message,
-          html: '<p>' + enquiry.message + '</p>'
+          html: 'Enquiry from ' + enquiry.name + '<p>' + 'Email ' + enquiry.email + '<p>' + 'Subject  '+enquiry.subject + '<p>' + 'Body ' + enquiry.message + '</p>'
         };
         smtp.sendMail(mailOptions, function(err, resp) {
           if (err) {
