@@ -1,6 +1,6 @@
 {
   "name": "docpad-plugin-contactifyr",
-  "version": "2.1.1",
+  "version": "2.1.0",
   "description": "DocPad plugin for contactify for mail contact",
   "homepage": "https://github.com/redbox-mint-contrib/docpad-plugin-contactifyr",
   "license": "MIT",
