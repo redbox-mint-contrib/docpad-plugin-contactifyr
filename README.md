@@ -1,78 +1,80 @@
 # Contactify Plugin for [DocPad](http://docpad.org)
 
-A fully customizable DocPad contact form plugin.
+<!-- BADGES/ -->
+
+<span class="badge-travisci"><a href="http://travis-ci.org/docpad/docpad-plugin-contactify" title="Check this project's build status on TravisCI"><img src="https://img.shields.io/travis/docpad/docpad-plugin-contactify/master.svg" alt="Travis CI Build Status" /></a></span>
+<span class="badge-npmversion"><a href="https://npmjs.org/package/docpad-plugin-contactify" title="View this project on NPM"><img src="https://img.shields.io/npm/v/docpad-plugin-contactify.svg" alt="NPM version" /></a></span>
+<span class="badge-npmdownloads"><a href="https://npmjs.org/package/docpad-plugin-contactify" title="View this project on NPM"><img src="https://img.shields.io/npm/dm/docpad-plugin-contactify.svg" alt="NPM downloads" /></a></span>
+<!-- /BADGES -->
 
 
-## Install
+Uppercase your text document's content by adding either the `uc` or `uppercase` extension to it
 
-```
-npm install --save docpad-plugin-contactify
-```
-
-Or add it to your package.json file
+Convention:  `.txt.(uc|uppercase)`
 
 
-## Usage (more coming soon)
 
-### Setup
+<!-- INSTALL/ -->
 
-Configure the path to be intercepted on your server and the email details for sending out form data in the DocPad configuration file (aka docpad.coffee):
+<h2>Install</h2>
 
-```coffeescript
-	plugins:
-		contactify:
-			path: '/contact-form'
-			transport: {
-				service: 'Gmail',
-				auth: {
-					user: 'contact@me.com',
-					pass: 'password'
-				}
-			}
-			from: me@site.name,
-			redirect: '/'
-			to: 'me@site.name'
-```
 
-API:
-- path: should match the POST action on your site's form.
+<!-- /INSTALL -->
 
-- transport: configures an SMTP transport instance using [nodemailer](http://www.nodemailer.com/) (any email account should do, it is where the mail is sent from)
 
-- from: you can here force a value to put in the 'from' field in the sent email. By default the from value is the email of the person who send the contact form.
+<!-- HISTORY/ -->
 
-- redirect: options that will be overwritten by the hidden input called redirect in your form (if it exists)
+<h2>History</h2>
 
-- to: list of destination email addresses for sending form submissions (comma separated)
+<a href="https://github.com/docpad/docpad-plugin-contactify/blob/master/HISTORY.md#files">Discover the release history by heading on over to the <code>HISTORY.md</code> file.</a>
 
-Then create your contact form:
+<!-- /HISTORY -->
 
-```HTML
-<form action="/contact-form" method="POST">
-	<fieldset>
-		<legend>Contact form</legend>
-		<input type="hidden" name="redirect" value="<%- @document.url %>?formSent=1">
-		<p>
-			<label for="name">Name/company</label>
-			<input type="text" id="name" name="name" placeholder="Name/company" />
-		</p>
-		<p>
-			<label for="email">Your email adress</label>
-			<input type="email" id="email" name="email" placeholder="contact@me.com" />
-		</p>
-		<p>
-			<label for="message">My message</label>
-			<textarea id="message" name="message" cols="10" rows="10" placeholder="Your message..."></textarea>
-		</p>
-		<p>
-			<button type="submit" value="Send" name="contact-send" id="contact-send">Send</button>
-		</p>
-	</fieldset>
-</form>
-```
 
-Note that here the hidden input 'redirect' will redirect to the page where the form was sent from, you can hard-code any other url you want in there
+<!-- CONTRIBUTE/ -->
 
-## License
-Licensed under the incredibly [permissive](http://en.wikipedia.org/wiki/Permissive_free_software_licence) [MIT License](http://creativecommons.org/licenses/MIT/)
-<br/>Copyright &copy; 2013+ [thaume](http://thau.me)
+<h2>Contribute</h2>
+
+<a href="https://github.com/docpad/docpad-plugin-contactify/blob/master/CONTRIBUTING.md#files">Discover how you can contribute by heading on over to the <code>CONTRIBUTING.md</code> file.</a>
+
+<!-- /CONTRIBUTE -->
+
+
+<!-- BACKERS/ -->
+
+<h2>Backers</h2>
+
+<h3>Maintainers</h3>
+
+These amazing people are maintaining this project:
+
+<ul><li><a href="#"></a> — <a href="https://github.com/docpad/docpad-plugin-contactify/commits?author=balupton" title="View the GitHub contributions on repository docpad/docpad-plugin-contactify">view contributions</a></li>
+<li><a href="your github url">Your name</a></li></ul>
+
+<h3>Sponsors</h3>
+
+No sponsors yet! Will you be the first?
+
+
+<h3>Contributors</h3>
+
+These amazing people have contributed code to this project:
+
+<a href="https://github.com/docpad/docpad-plugin-contactify/blob/master/CONTRIBUTING.md#files">Discover how you can contribute by heading on over to the <code>CONTRIBUTING.md</code> file.</a>
+
+<!-- /BACKERS -->
+
+
+<!-- LICENSE/ -->
+
+<h2>License</h2>
+
+Unless stated otherwise all works are:
+
+<ul><li>Copyright &copy; <a href="copyright holder's website url">Copyright holders name</a></li></ul>
+
+and licensed under:
+
+<ul><li><a href="http://spdx.org/licenses/MIT.html">MIT License</a></li></ul>
+
+<!-- /LICENSE -->

@@ -1,41 +1,89 @@
 {
   "name": "docpad-plugin-contactify",
-  "version": "2.0.11",
-  "description": "DocPad plugin to create, send and customize a contact form.",
-  "homepage": "https://github.com/thaume/docpad-plugin-contactify",
+  "version": "2.1.0",
+  "description": "DocPad plugin for contactify",
+  "homepage": "https://github.com/redbox-mint-contrib/docpad-plugin-contactify",
+  "license": "MIT",
   "keywords": [
     "docpad",
     "docpad-plugin",
     "form",
     "mail"
   ],
-  "author": "Tom Coquereau <tom@thau.me> (http://thau.me)",
-  "maintainers": [
-    "Tom Coquereau <tom@thau.me> (http://thau.me)"
-  ],
+  "badges": {
+    "list": [
+      "travisci",
+      "npmversion",
+      "npmdownloads"
+    ]
+  },
   "contributors": [
-    "Tom Coquereau <tom@thau.me> (http://thau.me)"
+    "Tom Coquereau <tom@thau.me> (http://thau.me)",
+    "mattRedBox <matt@redboxresearchdata.com.au>"
   ],
   "bugs": {
-    "url": "https://github.com/thaume/docpad-plugin-contactify/issues"
+    "url": "https://github.com/redbox-mint-contrib/docpad-plugin-contactify/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/thaume/docpad-plugin-contactify.git"
+    "url": "https://github.com/redbox-mint-contrib/docpad-plugin-contactify.git"
   },
   "engines": {
-    "node": ">=0.8",
-    "docpad": ">=6"
+    "node": ">=0.10"
   },
+  "editions": [
+    {
+      "description": "Source + CoffeeScript + Require",
+      "directory": "source",
+      "entry": "contactify.plugin.coffee",
+      "syntaxes": [
+        "coffeescript",
+        "require"
+      ]
+    },
+    {
+      "description": "CoffeeScript Compiled + ES5 + Require",
+      "directory": "es5",
+      "entry": "contactify.plugin.js",
+      "syntaxes": [
+        "javascript",
+        "es5",
+        "require"
+      ]
+    }
+  ],
+  "main": "es5/contactify.plugin.js",
   "dependencies": {
-    "nodemailer": "0.7.1"
+    "axios": "^0.18.0",
+    "nodemailer": "^4.6.4"
   },
   "devDependencies": {
-    "coffee-script": "~1.6.2"
+    "coffee-script": "^1.12.4",
+    "coffeelint": "^1.16.0",
+    "docpad": "^6.79.4",
+    "projectz": "^1.3.2"
   },
-  "main": "./out/contactify.plugin.js",
+  "peerDependencies": {
+    "docpad": "6"
+  },
   "scripts": {
-    "publish": "cake compile",
-    "test": "node ./out/contactify.test.js"
+    "setup": "npm run setup:npm && npm run setup:docpad",
+    "setup:npm": "npm install",
+    "setup:docpad": "bash ./docpad-setup.sh",
+    "clean": "rm -Rf ./docs ./es2015 ./es5 ./out",
+    "compile": "npm run compile:coffee",
+    "compile:coffee": "coffee -bco ./es5 ./source",
+    "meta": "npm run meta:projectz",
+    "meta:projectz": "projectz compile",
+    "verify": "npm run verify:coffeelint",
+    "verify:coffeelint": "coffeelint ./source",
+    "test": "node --harmony es5/contactify.test.js --joe-reporter=console",
+    "release": "npm run release:prepare && npm run release:check && npm run release:tag && npm run release:push",
+    "release:prepare": "npm run clean && npm run compile && npm run test && npm run meta",
+    "release:check": "npm run release:check:changelog && npm run release:check:dirty",
+    "release:check:changelog": "cat ./HISTORY.md | grep v$npm_package_version || (echo add a changelog entry for v$npm_package_version && exit -1)",
+    "release:check:dirty": "git diff --exit-code",
+    "release:tag": "export MESSAGE=$(cat ./HISTORY.md | sed -n \"/## v$npm_package_version/,/##/p\" | sed 's/## //' | awk 'NR>1{print buf}{buf = $0}') && test \"$MESSAGE\" || (echo 'proper changelog entry not found' && exit -1) && git tag v$npm_package_version -am \"$MESSAGE\"",
+    "release:push": "git push origin master && git push origin --tags"
   }
 }
