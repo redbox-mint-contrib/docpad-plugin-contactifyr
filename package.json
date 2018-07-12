@@ -2,7 +2,7 @@
   "name": "docpad-plugin-contactifyr",
   "version": "2.1.0",
   "description": "DocPad plugin for contactify",
-  "homepage": "https://github.com/docpad/docpad-plugin-contactifyr",
+  "homepage": "https://github.com/redbox-mint-contrib/docpad-plugin-contactifyr",
   "license": "MIT",
   "keywords": [
     "docpad",
@@ -21,11 +21,11 @@
     "mattRedBox <matt@redboxresearchdata.com.au>"
   ],
   "bugs": {
-    "url": "https://github.com/docpad/docpad-plugin-contactifyr/issues"
+    "url": "https://github.com/redbox-mint-contrib/docpad-plugin-contactifyr/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/docpad/docpad-plugin-contactifyr.git"
+    "url": "https://github.com/redbox-mint-contrib/docpad-plugin-contactifyr.git"
   },
   "engines": {
     "node": ">=0.10"
