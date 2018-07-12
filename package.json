@@ -1,8 +1,8 @@
 {
-  "name": "docpad-plugin-contactify",
+  "name": "docpad-plugin-contactifyr",
   "version": "2.1.0",
   "description": "DocPad plugin for contactify",
-  "homepage": "https://github.com/redbox-mint-contrib/docpad-plugin-contactify",
+  "homepage": "https://github.com/docpad/docpad-plugin-contactifyr",
   "license": "MIT",
   "keywords": [
     "docpad",
@@ -18,15 +18,14 @@
     ]
   },
   "contributors": [
-    "Tom Coquereau <tom@thau.me> (http://thau.me)",
     "mattRedBox <matt@redboxresearchdata.com.au>"
   ],
   "bugs": {
-    "url": "https://github.com/redbox-mint-contrib/docpad-plugin-contactify/issues"
+    "url": "https://github.com/docpad/docpad-plugin-contactifyr/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/redbox-mint-contrib/docpad-plugin-contactify.git"
+    "url": "https://github.com/docpad/docpad-plugin-contactifyr.git"
   },
   "engines": {
     "node": ">=0.10"
@@ -35,7 +34,7 @@
     {
       "description": "Source + CoffeeScript + Require",
       "directory": "source",
-      "entry": "contactify.plugin.coffee",
+      "entry": "contactifyr.plugin.coffee",
       "syntaxes": [
         "coffeescript",
         "require"
@@ -44,7 +43,7 @@
     {
       "description": "CoffeeScript Compiled + ES5 + Require",
       "directory": "es5",
-      "entry": "contactify.plugin.js",
+      "entry": "contactifyr.plugin.js",
       "syntaxes": [
         "javascript",
         "es5",
@@ -52,7 +51,7 @@
       ]
     }
   ],
-  "main": "es5/contactify.plugin.js",
+  "main": "es5/contactifyr.plugin.js",
   "dependencies": {
     "axios": "^0.18.0",
     "nodemailer": "^4.6.4"
@@ -77,7 +76,7 @@
     "meta:projectz": "projectz compile",
     "verify": "npm run verify:coffeelint",
     "verify:coffeelint": "coffeelint ./source",
-    "test": "node --harmony es5/contactify.test.js --joe-reporter=console",
+    "test": "node --harmony es5/contactifyr.test.js --joe-reporter=console",
     "release": "npm run release:prepare && npm run release:check && npm run release:tag && npm run release:push",
     "release:prepare": "npm run clean && npm run compile && npm run test && npm run meta",
     "release:check": "npm run release:check:changelog && npm run release:check:dirty",

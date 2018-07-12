@@ -5,7 +5,7 @@ axios = require 'axios'
 module.exports = (BasePlugin) ->
 
 	class ContactifyPlugin extends BasePlugin
-		name: 'contactify'
+		name: 'contactifyr'
 
 		config:
 			contact:
