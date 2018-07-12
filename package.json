@@ -78,6 +78,6 @@
     "verify": "npm run verify:coffeelint",
     "verify:coffeelint": "coffeelint ./source",
     "test": "node --harmony es5/contactifyr.test.js --joe-reporter=console",
-    "release:prepare": "npm run clean && npm run compile && npm run test && npm run meta",
+    "release:prepare": "npm run clean && npm run compile && npm run test && npm run meta"
   }
 }
